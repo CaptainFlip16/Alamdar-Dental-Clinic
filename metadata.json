@@ -1,0 +1,6 @@
+{
+  "name": "Alamdar Bright Smile Dental Clinic",
+  "description": "Modern dentistry on Main Alamdar Road, Quetta. Strong Teeth, Bright Smile — featuring gentle personalized care, cosmetic dentistry, interactive treatment booking, and smile transformations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
