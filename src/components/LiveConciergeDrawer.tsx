@@ -23,16 +23,18 @@ export const LiveConciergeDrawer: React.FC<LiveConciergeDrawerProps> = ({ onOpen
   const [quickQuestion, setQuickQuestion] = useState<string>('');
 
   const quickPrompts = [
-    'How much do porcelain veneers cost?',
-    'Do you offer pain-free treatments?',
+    'How much do porcelain veneers or crowns cost?',
+    'Do you offer pain-free root canal treatment?',
     'Where is your clinic on Alamdar Road Quetta?',
     'I have a dental emergency right now',
   ];
 
   const handleSendWhatsApp = (customMsg?: string) => {
-    const textToSend = customMsg || quickQuestion || 'Hello! I would like to inquire about dental treatments at Alamdar Bright Smile Dental Clinic on Main Alamdar Road, Quetta.';
+    const textToSend = customMsg || quickQuestion || 'Hello! I would like to inquire about dental treatments with Dr. Ejaz Hussain Nourozi on Main Alamdar Road, Quetta.';
     const encoded = encodeURIComponent(textToSend);
-    const whatsappUrl = `https://wa.me/${CLINIC_INFO.mobile.replace(/[^0-9]/g, '')}?text=${encoded}`;
+    const rawNum = (CLINIC_INFO.phone || '03158034831').replace(/[^0-9]/g, '');
+    const waNumber = rawNum.startsWith('0') ? '92' + rawNum.slice(1) : rawNum;
+    const whatsappUrl = `https://wa.me/${waNumber}?text=${encoded}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
@@ -82,7 +84,7 @@ export const LiveConciergeDrawer: React.FC<LiveConciergeDrawerProps> = ({ onOpen
                     </h3>
                     <div className="flex items-center gap-1.5 text-[11px] text-sky-300">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      <span>Online • Main Alamdar Road Quetta</span>
+                      <span>Dr. Ejaz Hussain Nourozi • Quetta</span>
                     </div>
                   </div>
                 </div>
@@ -104,7 +106,7 @@ export const LiveConciergeDrawer: React.FC<LiveConciergeDrawerProps> = ({ onOpen
                     Assalam-o-Alaikum! Welcome to Alamdar Bright Smile Dental Clinic.
                   </p>
                   <p className="text-slate-600 font-normal leading-relaxed">
-                    How may we assist you today? You can connect directly on WhatsApp with our clinical coordinator at Shop#1, Tanzeem school, Main Alamdar Road, Quetta:
+                    How may we assist you today? You can connect directly on WhatsApp with our clinic coordinator or Dr. Ejaz Hussain Nourozi at Shop#1, Tanzeem school, Main Alamdar Road, Quetta:
                   </p>
                 </div>
 
@@ -157,14 +159,17 @@ export const LiveConciergeDrawer: React.FC<LiveConciergeDrawerProps> = ({ onOpen
                 <div className="p-3 bg-slate-50 rounded-2xl border border-slate-200 space-y-1.5 text-xs text-slate-800">
                   <div className="flex items-center gap-2 font-bold">
                     <ShieldAlert className="w-4 h-4 text-amber-500" />
-                    <span>24/7 Dental Emergency Quetta:</span>
+                    <span>Dental Emergency Quetta Contacts:</span>
                   </div>
-                  <a
-                    href={`tel:${CLINIC_INFO.emergencyPhone}`}
-                    className="block font-mono font-bold text-sm text-sky-700 hover:underline"
-                  >
-                    {CLINIC_INFO.emergencyPhone}
-                  </a>
+                  <div className="flex items-center gap-3 font-mono font-bold text-sm text-sky-700">
+                    <a href={`tel:${CLINIC_INFO.phone}`} className="hover:underline">
+                      {CLINIC_INFO.phone}
+                    </a>
+                    <span>/</span>
+                    <a href={`tel:${CLINIC_INFO.mobile}`} className="hover:underline">
+                      {CLINIC_INFO.mobile}
+                    </a>
+                  </div>
                 </div>
 
                 {/* Quick Booking CTA in Concierge */}

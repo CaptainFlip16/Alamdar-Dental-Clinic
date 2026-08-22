@@ -27,6 +27,33 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
     }
   };
 
+  const socialLinks = [
+    {
+      name: 'Instagram',
+      handle: CLINIC_INFO.social?.instagramHandle || 'dr_ejaznourozi',
+      url: CLINIC_INFO.social?.instagram || 'https://www.instagram.com/dr_ejaznourozi',
+      short: 'IG',
+    },
+    {
+      name: 'TikTok',
+      handle: CLINIC_INFO.social?.tiktokHandle || 'Ejazhussain842',
+      url: CLINIC_INFO.social?.tiktok || 'https://www.tiktok.com/@Ejazhussain842',
+      short: 'TT',
+    },
+    {
+      name: 'Facebook',
+      handle: CLINIC_INFO.social?.facebookName || 'Dr. Ejaz Hussain Nourozi',
+      url: CLINIC_INFO.social?.facebook || 'https://www.facebook.com/Dr.EjazHussainNourozi',
+      short: 'FB',
+    },
+    {
+      name: 'WhatsApp',
+      handle: '03158034831',
+      url: `https://wa.me/923158034831`,
+      short: 'WA',
+    },
+  ];
+
   return (
     <footer className="bg-[#0B1528] text-slate-200 pt-16 pb-12 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -39,25 +66,29 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
             <ToothLogo light iconClassName="w-9 h-9" textClassName="text-xl sm:text-2xl" />
 
             <p className="text-xs sm:text-sm text-slate-400 font-normal leading-relaxed max-w-sm">
-              Strong Teeth, Bright Smile. Dedicated to elevating oral healthcare and dental aesthetics in Quetta, Balochistan through gentle conservative dentistry and precision 3D clinical workflows.
+              Strong Teeth, Bright Smile. Led by Dr. Ejaz Hussain Nourozi (BDS, RDS, C-endo | FJDC Karachi). Dedicated to gentle conservative dentistry and precision clinical oral care on Main Alamdar Road, Quetta.
             </p>
 
-            <div className="pt-2 flex items-center gap-3">
-              {['Facebook', 'Instagram', 'WhatsApp', 'YouTube'].map((social) => (
-                <span
-                  key={social}
-                  className="w-8 h-8 rounded-full bg-slate-800 hover:bg-[#0075FF] text-slate-300 hover:text-white flex items-center justify-center text-xs font-bold cursor-pointer transition-colors"
-                  title={social}
+            <div className="pt-2 flex flex-wrap items-center gap-2 sm:gap-2.5">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-800 hover:bg-[#0075FF] text-slate-300 hover:text-white text-xs font-semibold cursor-pointer transition-colors"
+                  title={`${social.name}: ${social.handle}`}
                 >
-                  {social[0]}
-                </span>
+                  <span className="font-bold text-[10px] uppercase text-sky-300">{social.short}</span>
+                  <span className="text-[11px]">{social.handle}</span>
+                </a>
               ))}
             </div>
 
             <div className="pt-2">
               <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-800/80 border border-slate-700 text-[11px] text-slate-300">
                 <ShieldAlert className="w-4 h-4 text-amber-400" />
-                <span>24/7 Dental Emergency Quetta: {CLINIC_INFO.emergencyPhone}</span>
+                <span>Dental Emergency Quetta: {CLINIC_INFO.emergencyPhone}</span>
               </div>
             </div>
           </div>
@@ -101,7 +132,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
                   onClick={(e) => handleSmoothScroll(e, '#doctors')}
                   className="hover:text-white transition-colors"
                 >
-                  Our Specialists
+                  Specialist Doctor
                 </a>
               </li>
               <li>
@@ -137,8 +168,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-sky-400 shrink-0" />
-                <a href={`tel:${CLINIC_INFO.mobile}`} className="hover:text-white transition-colors">
-                  {CLINIC_INFO.mobile} / {CLINIC_INFO.phone}
+                <a href={`tel:${CLINIC_INFO.phone}`} className="hover:text-white transition-colors">
+                  {CLINIC_INFO.phone} / {CLINIC_INFO.mobile}
                 </a>
               </div>
               <div className="flex items-center gap-2">

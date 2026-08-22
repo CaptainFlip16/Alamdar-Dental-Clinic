@@ -30,23 +30,23 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = ({
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-50 border border-sky-200/80 text-sky-800 text-xs font-bold uppercase tracking-wider shadow-2xs">
             <Award className="w-3.5 h-3.5 text-sky-600" />
-            <span>Consultant Clinical Faculty</span>
+            <span>Lead Clinical Specialist</span>
           </div>
           
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
-            Meet the clinical specialists{' '}
+            Meet Dr. Ejaz Hussain Nourozi,{' '}
             <span className="bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent italic font-normal">
               dedicated to your care.
             </span>
           </h2>
           
           <p className="text-base text-slate-600 font-normal max-w-2xl mx-auto">
-            Our team combines international training, PMDC certifications, and a compassionate touch to ensure every treatment on Main Alamdar Road, Quetta exceeds your expectations.
+            BDS, RDS, C-endo (FJDC Karachi) combining modern rotary endodontics, PMDC registration, and gentle touch on Main Alamdar Road, Quetta.
           </p>
         </motion.div>
 
-        {/* 3-Column Doctors Grid with Staggered Motion */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Doctors Grid with Staggered Motion */}
+        <div className={`grid gap-8 ${DOCTORS.length === 1 ? 'max-w-xl mx-auto' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
           {DOCTORS.map((doctor, index) => (
             <motion.div
               key={doctor.id}
@@ -69,20 +69,20 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = ({
                       const target = e.currentTarget;
                       if (!target.src.includes('unsplash.com')) {
                         target.src =
-                          'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80';
+                          'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80';
                       }
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent pointer-events-none" />
 
-                  {/* Experience Badge */}
+                  {/* Experience / PMDC Badge */}
                   <div className="absolute bottom-3.5 left-3.5 right-3.5 p-3 rounded-2xl bg-white/95 backdrop-blur-md shadow-lg border border-white/60 flex items-center justify-between">
                     <div>
                       <span className="text-xs font-bold text-slate-900 block">
                         {doctor.experience}
                       </span>
                       <span className="text-[10px] text-sky-700 font-bold uppercase tracking-wider">
-                        PMDC Verified
+                        FJDC (Karachi) • PMDC Verified
                       </span>
                     </div>
                     <ShieldCheck className="w-5 h-5 text-sky-600" />
@@ -98,15 +98,18 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = ({
                     <p className="text-xs font-bold text-sky-700 mt-0.5">
                       {doctor.role}
                     </p>
+                    <p className="text-[11px] font-mono font-semibold text-slate-500 mt-0.5">
+                      {doctor.title}
+                    </p>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed line-clamp-3">
+                  <p className="text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
                     {doctor.bio}
                   </p>
 
                   {/* Specialties Pills */}
                   <div className="flex flex-wrap gap-1.5 pt-1">
-                    {doctor.specialties.slice(0, 3).map((spec, sIdx) => (
+                    {doctor.specialties.map((spec, sIdx) => (
                       <span
                         key={sIdx}
                         className="px-2.5 py-1 rounded-lg bg-sky-50 border border-sky-100 text-[11px] font-semibold text-sky-800"
@@ -125,7 +128,7 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = ({
                   onClick={() => onSelectDoctor(doctor)}
                   className="flex-1 py-3 px-4 rounded-2xl bg-sky-50 border border-sky-100 text-sky-800 hover:bg-sky-100 hover:border-sky-200 text-xs font-bold transition-colors text-center cursor-pointer"
                 >
-                  View Credentials
+                  View Qualifications & Credentials
                 </motion.button>
 
                 <motion.button

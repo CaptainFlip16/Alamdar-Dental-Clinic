@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Award, Users, Smile, ShieldCheck } from 'lucide-react';
+import { CLINIC_INFO } from '../data/clinicData';
 
 export const StatsTrust: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
@@ -20,9 +21,9 @@ export const StatsTrust: React.FC = () => {
     },
     {
       icon: Award,
-      value: '18+ Years',
-      label: 'Combined Clinical Mastery',
-      sublabel: 'PMDC Registered Specialists',
+      value: 'PMDC Registered',
+      label: 'Dr. Ejaz Hussain Nourozi',
+      sublabel: 'BDS, RDS, C-endo | FJDC (Karachi)',
     },
     {
       icon: ShieldCheck,
@@ -33,14 +34,14 @@ export const StatsTrust: React.FC = () => {
   ];
 
   const tickerItems = [
-    'PMDC Certified Dental Specialists',
+    'Dr. Ejaz Hussain Nourozi (BDS, RDS, C-endo)',
+    'FJDC (Karachi) • PMDC Registered',
     'Shop#1, Tanzeem school, Main Alamdar Road Quetta',
-    '3D Digital Intraoral Scanning Technology',
+    'Clinic Contacts: 03158034831 / 03170919977',
+    'Specialist in Endodontics & Modern Root Canal (C-endo)',
     'Computerized Pain-Free Local Anesthesia',
     'German Class-B Triple Autoclave Sterilization',
-    '0% Easy 12-Month Card Installments',
-    'Swiss Straumann® Dental Implants',
-    'Over 20,000 Happy Smiles Transformed',
+    '0% Easy Card Installments',
   ];
 
   // Quadruple items to ensure seamless infinite looping without gaps on any screen width

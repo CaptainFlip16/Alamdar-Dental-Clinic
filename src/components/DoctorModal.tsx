@@ -88,7 +88,9 @@ export const DoctorModal: React.FC<DoctorModalProps> = ({
               <Award className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
               <div>
                 <div className="text-xs font-bold text-slate-900">Accreditations</div>
-                <div className="text-xs text-slate-600">{doctor.credentials}</div>
+                <div className="text-xs text-slate-600">
+                  {Array.isArray(doctor.credentials) ? doctor.credentials.join(', ') : doctor.credentials}
+                </div>
               </div>
             </div>
           </div>

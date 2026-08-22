@@ -7,6 +7,14 @@ export interface ClinicInfo {
   email: string;
   address: string;
   city: string;
+  social?: {
+    instagram?: string;
+    instagramHandle?: string;
+    tiktok?: string;
+    tiktokHandle?: string;
+    facebook?: string;
+    facebookName?: string;
+  };
   hours: { days: string; time: string }[];
   branches?: { city: string; location: string }[];
 }
